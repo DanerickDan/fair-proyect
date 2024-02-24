@@ -1,0 +1,45 @@
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Roboto Mono", monospace;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+
+/* Nav */
+a {
+    text-decoration: none;
+}
+
+
+.nav {
+    font-size: larger;
+    display: flex;
+}
+
+.nav > a {
+    color: #000;
+}
+
+.about-cl {
+    margin-right: 10%;
+    margin-left: 2%;
+}
+
+.logo {
+    margin-left: 3%;
+    margin-right: 8%; 
+}
+
+.login {
+    margin-left: auto;
+    margin-right: 2%;
+    border-bottom: solid 1px #000;
+}
+
+.create {
+    margin-right: 2%;
+    background-color: #d9d9d9;
+}

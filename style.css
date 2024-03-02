@@ -17,6 +17,7 @@ a {
 .nav {
     font-size: larger;
     display: flex;
+    border-bottom: solid 1px;
 }
 
 .nav > a {
@@ -30,16 +31,101 @@ a {
 
 .logo {
     margin-left: 3%;
-    margin-right: 8%; 
+    margin-right: 8%;
 }
 
 .login {
     margin-left: auto;
     margin-right: 2%;
+    margin-bottom: 7px;
     border-bottom: solid 1px #000;
 }
 
 .create {
     margin-right: 2%;
     background-color: #d9d9d9;
+    padding: 3px;
+    border-radius: 8px;
+}
+
+/* Tipo de usuario */
+
+.type-user {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 5vw;
+}
+
+.type-user > button {
+    margin-right: 10px;
+}
+
+.type-user-button {
+    background-color: #d9d9d9;
+    border: none;
+    border-radius: 8px;
+    padding: 5px;
+}
+
+/* Home principal */
+
+.texto {
+    margin-left: 2rem;
+    border-top: 1px solid;
+    border-image: linear-gradient(to left, transparent 70%, black 10%);
+    border-image-slice: 1;
+    max-width: 50%; /* Establece un ancho máximo del 50% del contenedor */
+    padding-top: 10px; /* Añade espacio superior para el borde */
+}
+
+.texto-prin {
+    margin-top: 4px;
+    padding: 1px;
+
+    margin-top: 0; /* Elimina el margen superior predeterminado */
+    padding: 0; /* Elimina el relleno predeterminado */
+}
+
+.ver-alcance {
+    width: 100px;
+    background-color: #000;
+    padding: 7px;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+}
+
+.cuadro-izquierdo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: #d9d9d9;
+    width: 9rem;
+    height: 7rem;
+    border-radius: 11px;
+    flex: 1; /* Permite que el cuadro izquierdo ocupe el espacio restante */
+    margin-left: 2rem; /* Añade margen izquierdo para separar del texto */
+}
+
+
+.cuadro-izquierdo > img {
+    width: 100%;
+    height: auto;
+    margin-left: 60%;
+}
+
+.cuadro-izquierdo > span {
+    margin-left: 6%;
+}
+
+.container-img-home {
+    display: flex;
+    flex-wrap: wrap; /* Permite que las imágenes se envuelvan */
+}
+
+.container-img-home img {
+    width: 50%; /* Establece el ancho de las imágenes al 50% del contenedor */
+    height: auto; /* Mantiene la proporción de aspecto */
 }

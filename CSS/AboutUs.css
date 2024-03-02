@@ -1,0 +1,64 @@
+
+
+.imagen-aboutUs img{
+
+  border-radius: 22px;
+  background: linear-gradient(145deg, #cacaca, #f0f0f0);
+  box-shadow:  13px 13px 35px #bababa,-13px -13px 35px #ffffff;
+  height: 400px;
+  width: 600px;
+
+}
+
+.aboutUs .imagen-aboutUs{
+  display: flex;
+  padding: 5% 5% 5% 2%;
+}
+
+.aboutUs {
+  display: flex;
+  padding: 5% 1% 5% 5%;
+  background-color: aquamarine;
+  margin: none;
+
+.first_h1{
+  font-size: 50px;
+  padding-left: 100px;
+}
+
+.first_h3{
+  font-size: 15px;
+  padding-left: 100px;
+  padding-right: 50px;
+}
+
+.diseño{
+  border-radius: 10px;
+  background: #e0e0e0;
+  box-shadow:  20px 20px 60px #bebebe,-20px -20px 60px #ffffff;
+
+  height: 80px;
+  width: 500px;
+  background-color: rgb(56, 162, 134);
+  margin-left: 100px;
+  font-size: 13px;
+  text-align:justify
+  
+ 
+}
+.diseño p{
+  margin: 10px 10px 10px 10px;
+}
+
+
+
+
+.footer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between ;
+
+}
+
+

@@ -80,13 +80,17 @@ a {
     border-image-slice: 1;
     max-width: 50%; /* Establece un ancho máximo del 50% del contenedor */
     padding-top: 10px; /* Añade espacio superior para el borde */
-  }
+    margin-left: 5%;
+}
+
+/* Mejorando el texto principal*/
 
 .texto-prin {
     margin-top: 4px;
     padding: 1px;
     margin-top: 0; /* Elimina el margen superior predeterminado */
     padding: 0; /* Elimina el relleno predeterminado */
+    font-size: 35px;
 }
 
 .ver-alcance {
@@ -106,6 +110,8 @@ a {
     margin-top: 5em;
 }
 
+
+
 .cuadro-izquierdo {
     display: flex;
     width: 10em; /* Set the width of the gray box */
@@ -116,6 +122,7 @@ a {
     background-color: #d9d9d9;
     border-radius: 11px;
     font-weight: bold;
+    margin-left: 17%;
 }
 
 .cuadro-izquierdo > img {

@@ -18,6 +18,8 @@ a {
     font-size: larger;
     display: flex;
     border-bottom: solid 1px;
+    font-weight: bold; 
+    margin-top: 10px;
 }
 
 .nav > a {
@@ -37,23 +39,25 @@ a {
 .login {
     margin-left: auto;
     margin-right: 2%;
-    margin-bottom: 7px;
+    margin-bottom: 18px;
     border-bottom: solid 1px #000;
 }
 
 .create {
     margin-right: 2%;
     background-color: #d9d9d9;
-    padding: 3px;
-    border-radius: 8px;
+    padding: 5px;
+    border-radius: 13px;
+    margin-bottom: 10px;
 }
 
 /* Tipo de usuario */
 
 .type-user {
     display: flex;
+    position: static;
     justify-content: center;
-    margin-top: 10px;
+    margin-top: 25px;
     margin-bottom: 5vw;
 }
 
@@ -65,24 +69,22 @@ a {
     background-color: #d9d9d9;
     border: none;
     border-radius: 8px;
-    padding: 5px;
+    padding: 7px;
 }
 
 /* Home principal */
 
 .texto {
-    margin-left: 2rem;
     border-top: 1px solid;
     border-image: linear-gradient(to left, transparent 70%, black 10%);
     border-image-slice: 1;
     max-width: 50%; /* Establece un ancho máximo del 50% del contenedor */
     padding-top: 10px; /* Añade espacio superior para el borde */
-}
+  }
 
 .texto-prin {
     margin-top: 4px;
     padding: 1px;
-
     margin-top: 0; /* Elimina el margen superior predeterminado */
     padding: 0; /* Elimina el relleno predeterminado */
 }
@@ -96,36 +98,71 @@ a {
     border-radius: 10px;
 }
 
+/* Contenedor de home sin change type */
+
+.texto-home{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 5em;
+}
+
 .cuadro-izquierdo {
     display: flex;
+    width: 10em; /* Set the width of the gray box */
+    height: 7em;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     background-color: #d9d9d9;
-    width: 9rem;
-    height: 7rem;
     border-radius: 11px;
-    flex: 1; /* Permite que el cuadro izquierdo ocupe el espacio restante */
-    margin-left: 2rem; /* Añade margen izquierdo para separar del texto */
+    font-weight: bold;
 }
-
 
 .cuadro-izquierdo > img {
     width: 100%;
     height: auto;
-    margin-left: 60%;
+    margin-left: 70%;
 }
 
 .cuadro-izquierdo > span {
     margin-left: 6%;
 }
 
+/* icon del cuadro izquiedo*/
+
+#icon-maletin {
+    width: 32px;
+    height: 32px;
+}
+
 .container-img-home {
     display: flex;
     flex-wrap: wrap; /* Permite que las imágenes se envuelvan */
+    width: 30%;
+    height: 30vh;
+    position: relative;
 }
 
 .container-img-home img {
-    width: 50%; /* Establece el ancho de las imágenes al 50% del contenedor */
-    height: auto; /* Mantiene la proporción de aspecto */
+    width: 45%; /* Establece el ancho de las imágenes al 50% del contenedor */
+    height: 15rem; /* Mantiene la proporción de aspecto */
 }
+
+/* imagenes del home  */
+#img-delantera {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 10px;
+    z-index: 1;
+}
+
+#img-trasera {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-radius: 10px;
+    z-index: 0;
+    margin-right: 150px;
+}
+

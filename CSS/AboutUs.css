@@ -1,8 +1,19 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body{
+  background-color: #474F7A;
+  margin: 0;
+  padding: 0;
+}
+
 .imagen-aboutUs img{
 
   border-radius: 22px;
   background: linear-gradient(145deg, #cacaca, #f0f0f0);
-  box-shadow:  13px 13px 35px #bababa,-13px -13px 35px #ffffff;
+  box-shadow:  13px 13px 35px #3d699d,-13px -13px 35px #6fbee9;
   height: 400px;
   width: 600px;
 
@@ -11,6 +22,11 @@
 .aboutUs .imagen-aboutUs{
   display: flex;
   padding: 5% 5% 5% 2%;
+  transition: transform 0.3s ease-in-out; 
+}
+
+.aboutUs .imagen-aboutUs:hover {
+  transform: scale(1.05); 
 }
 
 .aboutUs {
@@ -18,40 +34,95 @@
   padding: 5% 1% 5% 5%;
   margin: none;
 }
-
 .first_h1{
   font-size: 50px;
   padding-left: 100px;
+  padding-top: 20px;
 }
 
 .paragraph-about{
   font-size: 15px;
   padding-left: 100px;
   padding-right: 50px;
+  padding-bottom: 20px;
 }
 
 .diseño{
-  border-radius: 9px;
-  background: #e0e0e0;
-  height: 70px;
-  width: 450px;
-  background-color: #f7ede4;
+  border-radius: 10px;
+  box-shadow:  20px 20px 60px #81689D,-20px -20px 60px #81689D;
+
+  height: 80px;
+  width: 500px;
+  background-color: #1F2544;
   margin-left: 100px;
   font-size: 13px;
-  text-align:justify; 
+  text-align:justify;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  transition: transform 0.3s ease-in-out; 
+}
+
+.diseño img{
+
+  margin: 10px 10px 10px 20px;
 }
 
 .diseño p{
   margin: 10px 10px 10px 10px;
 }
 
+.aboutUs .diseño:hover {
+  transform: scale(1.05); 
+}
 
-.footer {
-  height: 100%;
+
+
+
+footer {
+  background-color: #6fbee9;
+  color: #000000;
+  padding: 180px 60px 10px 60px;
+  margin: 0;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between ;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  box-shadow:  13px 13px 35px #6fbee9,-13px -13px 35px #1F2544;
+}
 
+.hover_2:hover {
+  text-decoration: underline;
+  color: #f0f0f0;
+}
+
+footer a {
+  color: #000000;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.footer a img {
+  width: 30px;
+  height: 30px; 
+}
+
+.footer a img:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+}
+
+
+.footer::after {
+  content: "";
+  position: absolute;
+  bottom: 80px;
+  left: 60px; 
+  right: 60px; 
+  
+  height: 2px;
+  background-color: #000000;
+  
 }
 
 

@@ -1,8 +1,6 @@
 .imagen-aboutUs img{
-
   border-radius: 22px;
   background: linear-gradient(145deg, #cacaca, #f0f0f0);
-  box-shadow:  13px 13px 35px #3d699d,-13px -13px 35px #6fbee9;
   height: 400px;
   width: 600px;
 
@@ -23,14 +21,20 @@
   padding: 5% 1% 5% 5%;
   margin: none;
 }
+
 .first_h1{
-  font-size: 50px;
-  padding-left: 100px;
-  padding-top: 20px;
+  margin-left: 17%;
+  margin-top: 20px;
+  font-size: xx-large;
+}
+
+.first_h3{
+  margin-left: 17%;
+  width: 80%;
+
 }
 
 .paragraph-about{
-  font-size: 15px;
   padding-left: 100px;
   padding-right: 50px;
   padding-bottom: 20px;
@@ -38,39 +42,30 @@
 
 .diseño{
   border-radius: 10px;
-  box-shadow:  20px 20px 60px #81689D,-20px -20px 60px #81689D;
-
   height: 80px;
-  width: 500px;
+  width: 75%;
   background-color: #1F2544;
-  margin-left: 100px;
-  font-size: 13px;
+  margin-left: 20%;
+  font-size: x-small;
   text-align:justify;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  
   transition: transform 0.3s ease-in-out; 
 }
 
 .diseño img{
-
   margin: 10px 10px 10px 20px;
 }
 
-.diseño p{
-  margin: 10px 10px 10px 10px;
-}
 
 .aboutUs .diseño:hover {
   transform: scale(1.05); 
 }
 
-
-
+/* Footer style*/
 
 footer {
-  background-color: #6fbee9;
   color: #000000;
   padding: 180px 60px 10px 60px;
   margin: 0;
@@ -108,7 +103,6 @@ footer a {
   bottom: 80px;
   left: 60px; 
   right: 60px; 
-  
   height: 2px;
   background-color: #000000;
   

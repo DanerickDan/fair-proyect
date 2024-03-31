@@ -16,7 +16,25 @@ export default function login() {
       password:'',
       correo:''
     },onSubmit: value => {
-      alert(JSON.stringify(value,null,2))
+      fetch("./api/user", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(value,null,2)
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Error al enviar los datos');
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log('Respuesta del servidor:', data);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
     } })
 
   return (

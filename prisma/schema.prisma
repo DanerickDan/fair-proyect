@@ -32,12 +32,19 @@ model Categories{
   WorkPosts WorkPost[]
 }
 
+model Images {
+  id Int @id @default(autoincrement())
+  url String @db.Text
+  workPostId Int
+  workPost WorkPost @relation(fields: [workPostId],references: [id])
+}
+
 model WorkPost{
   id Int @id @default(autoincrement())
   service String @db.VarChar(50)
   description String @db.Text
   Price Decimal @db.Decimal(10,2)
-  image String @db.Text
+  images Images[]
  
   idCategory Int
   idUser Int
@@ -45,7 +52,3 @@ model WorkPost{
   user User @relation(fields: [idUser], references: [id])
   category Categories @relation(fields: [idCategory], references: [id])
 }
-
-
-
-

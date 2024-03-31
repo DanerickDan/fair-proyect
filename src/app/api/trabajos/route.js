@@ -16,11 +16,24 @@ export async function POST(request)
                 service: data.service,
                 description: data.description,
                 Price: data.Price,
-                image: data.image,
                 user: {connect: {id: userId}},
                 category: {connect: {id: category}},
             }
         });
+
+        if (work) {
+            const images = [];
+            const workposte = work.id;
+            for (const image of data.images) {
+                const createdImage = await prisma.images.create({
+                    data:{
+                        url: image.url,
+                        workPost: {connect: {id: workposte}}
+                    }
+                });
+                images.push(createdImage);
+            }
+        }
 
         return new NextResponse(JSON.stringify(work), {
             headers:{"Content-Type":"application/json"},

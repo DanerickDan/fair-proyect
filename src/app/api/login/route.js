@@ -15,7 +15,7 @@ export async function POST(request)
         });
 
         if(!user) {
-            return new NextResponse(JSON.stringify({estado: false,msg:"Incorrect User"}), {status: 404});
+            return new NextResponse(JSON.stringify({estado: false,msg:"Incorrect User"}), {status: 200});
         }
 
         const passwordMatch = await bcrypt.compare(data.password, user.password);

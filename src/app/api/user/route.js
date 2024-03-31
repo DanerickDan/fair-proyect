@@ -20,12 +20,11 @@ export async function POST(request)
                 password: hashedPassword
             }
         }))
-        return new NextResponse(JSON.stringify(user), {
-            headers:{"Content-Type":"application/json"},
-            status: 201
-        })
+
+        return new NextResponse(JSON.stringify({estado: true, msg:"User created"}));
+
     } catch (error) {
-        return new NextResponse(error.message, {status:500})
+        return new NextResponse(error.message,{status:500})
     }
 }
 

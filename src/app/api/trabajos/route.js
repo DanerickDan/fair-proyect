@@ -35,10 +35,8 @@ export async function POST(request)
             }
         }
 
-        return new NextResponse(JSON.stringify(work), {
-            headers:{"Content-Type":"application/json"},
-            status: 201
-        })
+        return new NextResponse(JSON.stringify({estado: true, msg:"Work Post created"}))
+
     } catch (error) {
         return new NextResponse(error.message, {status:500})
     }

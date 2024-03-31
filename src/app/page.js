@@ -12,11 +12,11 @@ export default function login() {
 
   const formik = useFormik({ 
     initialValues: {
-      usuario:'',
+      username:'',
       password:'',
       correo:''
     },onSubmit: value => {
-      fetch("./api/user", {
+      fetch("./api/login", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -54,10 +54,10 @@ export default function login() {
             <input 
               className="w-2/3 border-2 px-3 py-4 my-2 rounded-xl " 
               type="text"
-              id ="usuario" 
-              name="usuario"
+              id ="username" 
+              name="username"
               onChange={formik.handleChange}
-              value={formik.values.usuario}
+              value={formik.values.username}
               placeholder="Usuario" />
             <input 
               className="w-2/3 border-2 px-3 py-4 my-2 rounded-xl" 

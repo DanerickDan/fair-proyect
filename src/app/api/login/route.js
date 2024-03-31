@@ -15,22 +15,17 @@ export async function POST(request)
         });
 
         if(!user) {
-            return new NextResponse("Usuario No Encontrado", {status: 404});
+            return new NextResponse(JSON.stringify({estado: false,msg:"Incorrect User"}), {status: 404});
         }
 
         const passwordMatch = await bcrypt.compare(data.password, user.password);
 
         if (!passwordMatch) {
-            return new NextResponse("Contraseña Incorrecta", {status: 401});
+            return new NextResponse(JSON.stringify({estado: false}), {status: 200});
         }
 
-        //return true;
-
-        return new NextResponse(JSON.stringify(user), {
-            
-            headers: {"Content-Type": "application/json"},
-            status: 200
-        });
+        return new NextResponse(JSON.stringify({estado: true,id: user.id, name: user.username}));
+        
     }catch(error){
         return new NextResponse(error.message, {status: 500});
     }

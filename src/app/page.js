@@ -1,95 +1,76 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client"
+import { useState } from "react";
+import { useFormik } from 'formik';
 
-export default function Home() {
+export default function login() {
+
+  const [newUser, setRegister] = useState(false);
+
+  function registrarse(event) {
+    setRegister(!newUser)
+  }
+
+  const formik = useFormik({ 
+    initialValues: {
+      usuario:'',
+      password:'',
+      correo:''
+    },onSubmit: value => {
+      alert(JSON.stringify(value,null,2))
+    } })
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div className="flex items-center ">
+
+      <div className="basis-2/3 p-16  ">
+        <div className=" mx-auto mb-4">
+          <div className="text-center mb-2">
+            <h1 className="text-4xl font-bold">Bienvenido</h1>
+            <span className="text-xs">Bienvenido de vuelta. Por favor, ingresa tus detalles</span>
+            <div className="bg-slate-200 w-2/3 mx-auto px-0.5 py-0.5  rounded-2xl flex gap-4 place-content-between ">
+              <button className={"px-4 py-4 rounded-2xl " + (newUser == false ? "bg-white w-full" : "")} onClick={registrarse} >Iniciar</button>
+              <button className={"px-4 py-4 rounded-2xl " + (newUser == true ? "bg-white w-full" : "")} onClick={registrarse}  >Registrar</button>
+            </div>
+          </div>
+          <form onSubmit={formik.handleSubmit} className="flex items-center flex-col" method="POST">
+            <input 
+              className="w-2/3 border-2 px-3 py-4 my-2 rounded-xl " 
+              type="text"
+              id ="usuario" 
+              name="usuario"
+              onChange={formik.handleChange}
+              value={formik.values.usuario}
+              placeholder="Usuario" />
+            <input 
+              className="w-2/3 border-2 px-3 py-4 my-2 rounded-xl" 
+              type="password"
+              id="contraseña" 
+              placeholder="Contraseña" 
+              name="password"
+              onChange={formik.handleChange}
+              value={formik.values.password} />
+            <input 
+              className={"w-2/3 border-2 px-3 py-4 my-2 rounded-xl" + (newUser === false ? " hidden" : "")} 
+              type="email" 
+              placeholder="Correo" 
+              name="correo" 
+              id="correo"
+              onChange={formik.handleChange}
+              value={formik.values.correo} />
+            <input className="cursor-pointer w-2/3 border-2 px-3 py-4 my-2 rounded-xl hover:bg-transparent hover:text-black bg-black text-white font-semibold" type="submit" value="Continuar" />
+          </form>
+          <div className="flex items-center justify-center gap-3 ">
+            <button className="hover:bg-red-500 hover:text-white w-48 rounded-xl border border-red-500 px-2 py-3 my-2 font-semibold" > Google</button>
+            <button className=" hover:bg-blue-600 hover:text-white w-48 rounded-xl border border-blue-500 px-2 py-3 my-2 font-semibold" >Facebook</button>
+          </div>
         </div>
+
+        <div className="text-center ">© 2024 Empresa fair-proyect. Todos los derechos reservados</div>
+      </div>
+      <div className=" basis-2/4 h-full w-full ">
+        <img className=" object-cover h-full w-full" src="/img_login.png" alt="" />
       </div>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
+    </div>
+  )
 }

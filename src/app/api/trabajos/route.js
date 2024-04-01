@@ -10,6 +10,7 @@ export async function POST(request)
 
         const userId = data.idUser;
         const category = data.idCategory;
+        const location = data.idLocation;
 
         const work = await prisma.WorkPost.create({
             data:{
@@ -18,6 +19,7 @@ export async function POST(request)
                 Price: data.Price,
                 user: {connect: {id: userId}},
                 category: {connect: {id: category}},
+                location: {connect: {id: location}},
             }
         });
 

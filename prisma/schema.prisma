@@ -39,16 +39,30 @@ model Images {
   workPost WorkPost @relation(fields: [workPostId],references: [id])
 }
 
+//agregando nueva tabla location
+model Locations {
+  id Int @id @default(autoincrement())
+  name String @db.VarChar(255)
+
+  WorkPosts WorkPost[]
+}
+
 model WorkPost{
   id Int @id @default(autoincrement())
   service String @db.VarChar(50)
   description String @db.Text
   Price Decimal @db.Decimal(10,2)
+  //ajuste de fecha de creacion
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
   images Images[]
- 
+  
+  idLocation Int
   idCategory Int
   idUser Int
 
+  location Locations @relation(fields: [idLocation], references: [id])
   user User @relation(fields: [idUser], references: [id])
   category Categories @relation(fields: [idCategory], references: [id])
 }
+

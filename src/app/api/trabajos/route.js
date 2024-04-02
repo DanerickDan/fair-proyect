@@ -44,11 +44,25 @@ export async function POST(request)
     }
 }
 
+//export async function GET(){
+//    try {
+//        const works = await prisma.WorkPost.findMany()
+//        return NextResponse.json({data:works}, {status: 200});
+//    } catch (error) {
+//        return new NextResponse(error.message, {status:500})
+//    }
+
 export async function GET(){
     try {
-        const works = await prisma.WorkPost.findMany()
-        return NextResponse.json({data:works}, {status: 200});
+        const works = await prisma.WorkPost.findMany({
+            include: {
+                images: true // Esto cargará las imágenes relacionadas
+            }
+        });
+        return NextResponse.json({data: works}, {status: 200});
     } catch (error) {
-        return new NextResponse(error.message, {status:500})
+        return new NextResponse(error.message, {status:500});
     }
 }
+
+//}

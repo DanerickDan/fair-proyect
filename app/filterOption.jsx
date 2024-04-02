@@ -1,5 +1,4 @@
 function FilterOption({ label, options, selectedFilters, onFilterChange }) {
-
   const handleFilterChange = (event) => {
     const { value, checked } = event.target;
     const updatedFilters = checked

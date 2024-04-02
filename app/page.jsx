@@ -1,12 +1,11 @@
-"use client"
-import { useState } from 'react';
-import FilterComponent from '../components/filterComponent';
-import ListComponent from '../components/listComponent';
-import { provinciasData } from "./dataFilter.js"
-
+"use client";
+import { useState } from "react";
+import FilterComponent from "../components/filterComponent";
+import ListComponent from "../components/listComponent";
+import { provinciasData } from "./dataFilter.js";
 
 function App() {
-  const [filterCriteria, setFilterCriteria] = useState('');
+  const [filterCriteria, setFilterCriteria] = useState("");
 
   const handleFilterChange = (value) => {
     setFilterCriteria(value);

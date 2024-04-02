@@ -7,7 +7,7 @@ export default function Layout(
 {
     return(
         <div className="flex h-screen flex-col md:flex-row md:overflow-hidden scrollbar scrollbar-thumb-rose-500 ">
-            <div className="flex-grow md:overflow-y-auto ">
+            <div className="flex-grow md:overflow-y-auto mr-[5%] ">
                 <View1/>
             </div>
             <div className="w-full flex-none md:w-64">

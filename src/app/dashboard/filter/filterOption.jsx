@@ -33,3 +33,5 @@ function FilterOption({ label, options, selectedFilters, onFilterChange }) {
 }
 
 export default FilterOption;
+
+// Componente innecesario

@@ -1,16 +1,54 @@
-import { FaRegStar,FaRegBell,FaCommentDots,FaSuitcase   } from "react-icons/fa";
+"use client";
+import {
+  FaRegStar,
+  FaRegBell,
+  FaCommentDots,
+  FaSuitcase,
+} from "react-icons/fa";
+import Img from "next/image";
+import { useState, useEffect } from "react";
+import { post } from "../dashboardData/post";
+import FilterComponent from "../components/filterComponent.jsx";
+import ListComponent from "../components/listComponent.jsx";
+import FilterModal from "../components/filterModal";
+import  useFetch   from "../../Hooks/useFetch"
+import { provinciasData, posteoTrabajoData } from "../filter/dataFilter";
 
-export default function View1Page(){
-    const post = [
-        {id:1, title:'trabajo de atrcador', detalle:'Nesecito algien que sepa robar y que sea negro', fecha:'10-02-2024', perfil:'/perfil.jpg', fotos:'trab1.jpg' },
-        {id:2, title:'trabajo de atrcador', detalle:'Nesecito algien que sepa robar y que sea negro', fecha:'10-02-2024', perfil:'/perfil.jpg', fotos:'' },
-        {id:3, title:'trabajo de atrcador', detalle:'Nesecito algien que sepa robar y que sea negro', fecha:'10-02-2024', perfil:'/perfil.jpg', fotos:'trab1.jpg' },
-        {id:4, title:'trabajo de atrcador', detalle:'Nesecito algien que sepa robar y que sea negro', fecha:'10-02-2024', perfil:'/perfil.jpg', fotos:'trab1.jpg' },
-    ];
+
+export default function View1Page() {
+
+  const [filterCriteria, setFilterCriteria] = useState("");
+  const [selectedFilters, setSelectedFilters] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { data: postData, loading, error } = useFetch("http://localhost:3000/api/User", selectedFilters, searchTerm);
+
+
+  const handleFilterChange = (filters) => {
+    setSelectedFilters(filters);
+  };
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    
+  };
+
+  // useEffect(() => {
+  //   fetchData(selectedFilters, searchTerm);
+  // }, [selectedFilters, searchTerm]);
+
 
     // const MyComponent = ({ stream }) => {
     //     const isStreamValid = stream !== '';
-      
+
     //     return (
     //       <div>
     //         {isStreamValid && (
@@ -20,74 +58,114 @@ export default function View1Page(){
     //       </div>
     //     );
     //   };
+    // var trabL = 0;
 
-    return (
-        <div className="viewscrollbar-hide ">
-            <input style={{background:'black'}} type='text' placeholder="Buscar..." className="flex h-[70px] w-[100%] mb-[5%] bg-black  text-white grow items-center justify-center gap-6 rounded-[15px] bg-gray-50 p-3 text-[25px] font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:p-5 md:px-3"/>
+  return (
+    <div className="viewscrollbar-hide ">
+      <input
+        onChange={handleSearchChange}
+        style={{ background: "black" }}
+        type="text"
+        placeholder="Buscar..."
+        className="flex h-[70px] w-[100%] mb-[5%] bg-black  text-white grow items-center justify-center gap-6 rounded-[15px] bg-gray-50 p-3 text-[25px] font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:p-5 md:px-3"
+      />
 
-            {
-                post.map(post => {
-                    return (
-                        <div className="flex">
-                            <div style={{background:'black'}} className="w-[100%]  mb-[5%] mr-[5%] pt-[10px] pl-[3%] bg-black  text-white grow items-center rounded-[15px] bg-gray-50 text-md font-medium">
-                                <div className="flex justify-between">
-                                    <img 
-                                        src={post.perfil} 
-                                        alt="foto"
-                                        width={50}
-                                        height={50}
-                                        className="rounded-[100px]" 
-                                    />
-                                    <div className="mr-[20px]">
-                                        <span className="text-[12px] text-gray-400">{post.fecha}</span>
-                                    </div>
-                                </div>
-                                <div>
-                                    <p className="pt-[10px]">{post.title}</p>
-                                </div>
-                                <div>
-                                    <p className="pt-[10px] pb-[10px] text-[15px] text-gray-400">
-                                        {post.detalle}
-                                    </p>
-                                </div>
-                                <div className="flex justify-between mr-[20px] h-[40px]">
-                                    <FaSuitcase  size={30}/>
-                                    <FaCommentDots size={30}/>
-                                </div>
-                            </div>
+      {/* Modal */}
+      {/* Botón para abrir el modal */}
+      <button onClick={handleOpenModal}>Abrir Modal</button>
 
-                            <div style={{background:'black'}} className="w-[100%]  mb-[5%]  pt-[10px] pl-[3%] bg-black  text-white grow items-center rounded-[15px] bg-gray-50 text-md font-medium">
-                                
-                            <div className="flex justify-between">
-                                <img 
-                                    src={post.perfil} 
-                                    alt="foto"
-                                    width={50}
-                                    height={50}
-                                    className="rounded-[100px]" 
-                                />
-                                <div className="mr-[20px]">
-                                    <span className="text-[12px] text-gray-400">{post.fecha}</span>
-                                </div>
-                            </div>
-                            <div>
-                                <p className="pt-[10px]">{post.title}</p>
-                            </div>
-                            <div>
-                                <p className="pt-[10px] pb-[10px] text-[15px] text-gray-400">
-                                    {post.detalle}
-                                </p>
-                            </div>
-                            <div className="flex justify-between mr-[20px] h-[40px]">
-                                <FaSuitcase  size={30}/>
-                                <FaCommentDots size={30}/>
-                            </div>
-                        </div>
-                    </div>
-                    );
-                })
-            }
+      {/* Modal */}
+      <FilterModal
+        isOpen={isModalOpen}
+        onRequestClose={handleCloseModal}
+        filters={[
+          { label: 'Filtrar por Locación', options: provinciasData.map((provincia) => provincia.nombre) },
+          { label: 'Filtrar tiempo trabajo posteado', options: posteoTrabajoData },
+        ]}
+        onFilterChange={handleFilterChange}
+      /> 
 
-        </div>
-    );
+      {loading ? <div>Cargando...</div> : error ? <div>Error: {error.message}</div> :
+        <ListComponent data={postData} filterCriteria={filterCriteria} selectedFilters={selectedFilters} />
+      }
+
+      
+    </div>
+  );
 }
+
+/*
+
+  {post.map((post) => {
+        // TODO: Agregar el key del iterador, cuando usamos map para renderizar componentes debemos darle
+        // TODO: un diferenciador a cada componente que se renderiza.
+        return (
+          <div className="flex" key={post.id}>
+            <div
+              style={{ background: "black" }}
+              className="w-[100%]  mb-[5%] mr-[5%] pt-[10px] pl-[3%] bg-black  text-white grow items-center rounded-[15px] bg-gray-50 text-md font-medium"
+            >
+              <div className="flex justify-between">
+                <Img
+                  src={post.perfil}
+                  alt="foto"
+                  width={50}
+                  height={50}
+                  className="rounded-[100px]"
+                />
+                <div className="mr-[20px]">
+                  <span className="text-[12px] text-gray-400">
+                    {post.fecha}
+                  </span>
+                </div>
+              </div>
+              <div>
+                <p className="pt-[10px]">{post.title}</p>
+              </div>
+              <div>
+                <p className="pt-[10px] pb-[10px] text-[15px] text-gray-400">
+                  {post.detalle}
+                </p>
+              </div>
+              <div className="flex justify-between mr-[20px] h-[40px]">
+                <FaSuitcase size={30} />
+                <FaCommentDots size={30} />
+              </div>
+            </div>
+
+            <div
+              style={{ background: "black" }}
+              className="w-[100%]  mb-[5%]  pt-[10px] pl-[3%] bg-black  text-white grow items-center rounded-[15px] bg-gray-50 text-md font-medium"
+            >
+              <div className="flex justify-between">
+                <Img
+                  src={post.perfil}
+                  alt="foto"
+                  width={50}
+                  height={50}
+                  className="rounded-[100px]"
+                />
+                <div className="mr-[20px]">
+                  <span className="text-[12px] text-gray-400">
+                    {post.fecha}
+                  </span>
+                </div>
+              </div>
+              <div>
+                <p className="pt-[10px]">{post.title}</p>
+              </div>
+              <div>
+                <p className="pt-[10px] pb-[10px] text-[15px] text-gray-400">
+                  {post.detalle}
+                </p>
+              </div>
+              <div className="flex justify-between mr-[20px] h-[40px]">
+                <FaSuitcase size={30} />
+                <FaCommentDots size={30} />
+              </div>
+            </div>
+          </div>
+        );
+      })}
+
+*/

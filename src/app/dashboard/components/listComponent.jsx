@@ -7,23 +7,15 @@ import {
 } from "react-icons/fa";
 import Img from "next/image";
 
-function ListComponent({ data, filterCriteria, selectedFilters }) {
-  const {
-    data: filteredData,
-    loading,
-    error,
-  } = useFetch(
-    "http://localhost:3000/api/User",
-    selectedFilters,
-    filterCriteria
-  );
+function ListComponent({ data, loading, error }) {
 
   if (loading) return <div>Cargando...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
+
   return (
     <div>
-      {filteredData.map((item, index) => (
+      {data.map((item, index) => (
         <div key={index}>
           <div className="flex" key={post.id}>
             <div

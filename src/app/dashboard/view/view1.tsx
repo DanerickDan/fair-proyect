@@ -1,28 +1,22 @@
 "use client";
-import {
-  FaRegStar,
-  FaRegBell,
-  FaCommentDots,
-  FaSuitcase,
-} from "react-icons/fa";
 import Img from "next/image";
 import { useState, useEffect } from "react";
 import { post } from "../dashboardData/post";
-import FilterComponent from "../components/filterComponent.jsx";
 import ListComponent from "../components/listComponent.jsx";
 import FilterModal from "../components/filterModal";
-import  useFetch   from "../../Hooks/useFetch"
+import useFetch from "../../Hooks/useFetch";
 import { provinciasData, posteoTrabajoData } from "../filter/dataFilter";
 
-
 export default function View1Page() {
-
   const [filterCriteria, setFilterCriteria] = useState("");
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { data: postData, loading, error } = useFetch("http://localhost:3000/api/User", selectedFilters, searchTerm);
-
+  const {
+    loading,
+    error,
+    fetchData,
+  } = useFetch("http://localhost:3000/api/User", selectedFilters, searchTerm);
 
   const handleFilterChange = (filters) => {
     setSelectedFilters(filters);
@@ -38,27 +32,25 @@ export default function View1Page() {
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
-    
   };
 
-  // useEffect(() => {
-  //   fetchData(selectedFilters, searchTerm);
-  // }, [selectedFilters, searchTerm]);
+  useEffect(() => {
+    fetchData();
+  }, [selectedFilters, searchTerm]);
 
+  // const MyComponent = ({ stream }) => {
+  //     const isStreamValid = stream !== '';
 
-    // const MyComponent = ({ stream }) => {
-    //     const isStreamValid = stream !== '';
-
-    //     return (
-    //       <div>
-    //         {isStreamValid && (
-    //           <p>El stream es válido: {stream}</p>
-    //         )}
-    //         {!isStreamValid && <p>El stream está vacío.</p>}
-    //       </div>
-    //     );
-    //   };
-    // var trabL = 0;
+  //     return (
+  //       <div>
+  //         {isStreamValid && (
+  //           <p>El stream es válido: {stream}</p>
+  //         )}
+  //         {!isStreamValid && <p>El stream está vacío.</p>}
+  //       </div>
+  //     );
+  //   };
+  // var trabL = 0;
 
   return (
     <div className="viewscrollbar-hide ">
@@ -79,17 +71,25 @@ export default function View1Page() {
         isOpen={isModalOpen}
         onRequestClose={handleCloseModal}
         filters={[
-          { label: 'Filtrar por Locación', options: provinciasData.map((provincia) => provincia.nombre) },
-          { label: 'Filtrar tiempo trabajo posteado', options: posteoTrabajoData },
+          {
+            label: "Filtrar por Locación",
+            options: provinciasData.map((provincia) => provincia.nombre),
+          },
+          {
+            label: "Filtrar tiempo trabajo posteado",
+            options: posteoTrabajoData,
+          },
         ]}
         onFilterChange={handleFilterChange}
-      /> 
+      />
 
-      {loading ? <div>Cargando...</div> : error ? <div>Error: {error.message}</div> :
-        <ListComponent data={postData} filterCriteria={filterCriteria} selectedFilters={selectedFilters} />
-      }
-
-      
+      {loading ? (
+        <div>Cargando...</div>
+      ) : error ? (
+        <div>Error: {error.message}</div>
+      ) : (
+        <ListComponent data={fetchData} loading={loading} error={error} />
+      )}
     </div>
   );
 }

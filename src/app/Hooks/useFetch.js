@@ -23,26 +23,39 @@ export default function useFetch(url, filters, searchTerm) {
     fetchUrl += `&search=${searchTerm}`;
   }
 
+  // Funcion fetchData 
+  const fetchData = () => {
+    setLoading(true);
+    if (controller) {
+      fetch(fetchUrl, { signal: controller.signal })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((data) => setData(data))
+        .catch((error) => {
+          if (error.name === "AbortError") {
+            console.log("Request Cancelled");
+          } else {
+            setError(error);
+          }
+        })
+        .finally(() => setLoading(false));
+    }
+  };
+
 
   useEffect(() => {
-    // Para cuando se desmonte el componente libere todos los recursos
-    const abortController = new AbortController(); // Función de limpieza
+    const abortController = new AbortController();
     setController(abortController);
-    setLoading(true);
 
-    fetch(url, { signal: abortController.signal })
-      .then((response) => response.json())
-      .then((data) => setData(data))
-      .catch((error) => {
-        if (error.name === "AbortError") {
-          // Si el error es AbortError es porque fue el usuario que cancelo la petición
-          console.log("Request Cancelled");
-        }
-        setError(error);
-      })
-      .finally(() => setLoading(false));
+    fetchData(); // Llamar a fetchData al inicio para realizar la solicitud
+
     return () => abortController.abort();
-  }, [url, filters, searchTerm]);
+  }, [fetchUrl, controller]);
+
 
   // Por si es el usuario que cancela la petición
   const handleCancelRequest = () => {
@@ -53,5 +66,5 @@ export default function useFetch(url, filters, searchTerm) {
   };
 
   // retorno loading para saber el estado de la carga
-  return { data, loading, error, handleCancelRequest , fetchData};
+  return { loading, error, handleCancelRequest , fetchData};
 }

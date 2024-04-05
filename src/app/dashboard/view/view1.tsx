@@ -58,6 +58,7 @@ export default function View1Page() {
     //       </div>
     //     );
     //   };
+    // var trabL = 0;
 
   return (
     <div className="viewscrollbar-hide ">
@@ -82,7 +83,7 @@ export default function View1Page() {
           { label: 'Filtrar tiempo trabajo posteado', options: posteoTrabajoData },
         ]}
         onFilterChange={handleFilterChange}
-      />
+      /> 
 
       {loading ? <div>Cargando...</div> : error ? <div>Error: {error.message}</div> :
         <ListComponent data={postData} filterCriteria={filterCriteria} selectedFilters={selectedFilters} />

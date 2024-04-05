@@ -1,5 +1,6 @@
 'use client'
 
+import style from '../style.module.css';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { FaCommentDots, FaHome } from "react-icons/fa";
@@ -21,7 +22,7 @@ export default function NavLinks() {
             key={link.name}
             href={link.href}
             style={{background:'black'}} 
-            className={`flex h-[48px]  bg-black  text-white grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:p-2 md:px-3
+            className={`flex h-[48px]   grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:p-2 md:px-3
             ${pathname === link.href ? 'bgskey-100 text-blue-600': ''}
             `}
           >

@@ -1,13 +1,16 @@
 "use client"
 import { useState } from "react";
 import { useFormik } from 'formik';
+import { useRouter } from "next/navigation";
 
 export default function login() {
-
+  
   const [newUser, setRegister] = useState(false);
-
+  const router = useRouter();
+  
   function registrarse(event) {
     setRegister(!newUser)
+  
   }
 
   const formik = useFormik({ 
@@ -16,7 +19,13 @@ export default function login() {
       password:'',
       correo:''
     },onSubmit: value => {
-      fetch("./api/login", {
+   
+      const Ruta = (value.correo.length != 0) 
+      ? "./api/user" 
+      : ".a/api/login"
+
+
+      fetch(Ruta, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -26,11 +35,17 @@ export default function login() {
         .then(response => {
           if (!response.ok) {
             throw new Error('Error al enviar los datos');
+
           }
           return response.json();
         })
         .then(data => {
           console.log('Respuesta del servidor:', data);
+          if(data.status == true){
+            router.push('/dashboard')
+          } else{
+            alert("Contraseña incorrecta")
+          }
         })
         .catch(error => {
           console.error('Error:', error);

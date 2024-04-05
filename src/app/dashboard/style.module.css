@@ -1,0 +1,35 @@
+.chats {
+    display: flex;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 15px;
+    color:black;
+    background-color: white;
+}
+
+.chats:hover{
+    color:white;
+    background: black;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 15px;
+  }
+  
+  .row {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px; /* Espacio entre las filas */
+    border-radius: 15px;
+  }
+  
+  .item {
+    flex: 1;
+    margin-right: 10px; /* Espacio entre los elementos */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+  }

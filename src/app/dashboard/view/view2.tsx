@@ -1,3 +1,4 @@
+import style from '../style.module.css';
 import { FaRegStar,FaRegBell,FaCommentDots,FaSuitcase   } from "react-icons/fa";
 import Link from 'next/link';
 
@@ -10,7 +11,7 @@ const links = [
 export default function View2Page(){
     return (
         <div>
-            <div style={{background:'black'}} className="flex h-[70px] w-[100%] bg-black  text-white grow items-center justify-center gap-6 rounded-[15px] bg-gray-50 p-3 text-md font-medium">
+            <div style={{background:'black'}} className="flex h-[70px] w-[100%] bg-black grow items-center justify-center gap-6 rounded-[15px] bg-gray-50 p-3 text-md font-medium">
                 <FaRegStar size={40}/>
                 <FaRegBell size={30}/>
                 <img 
@@ -26,8 +27,7 @@ export default function View2Page(){
                     <Link
                     key={link.name}
                     href=''
-                    className={`flex h-[55px] mt-[10px] bg-black  text-white grow items-center justify-center gap-2 text-black rounded-[15px] bg-white p-3 text-sm font-medium hover:bg-black hover:text-white md:flex-none md:p-2 md:px-3
-                    `}
+                    className={style.chats}
                   >
                      <img
                             src={link.foto}
@@ -36,7 +36,7 @@ export default function View2Page(){
                             height={40}
                             className="rounded-[100px]" 
                         />
-                        <p className="hidden md:block group-hover:text-white">{link.name}</p>
+                        <p className='ml-[10px]'>{link.name}</p>
                         <FaCommentDots size={30} className="ml-[20%]"/>
                   </Link>
                 )

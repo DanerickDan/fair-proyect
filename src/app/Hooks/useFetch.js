@@ -44,7 +44,7 @@ export default function useFetch(url, filters, searchTerm) {
         })
         .finally(() => setLoading(false));
     }
-  };
+  }
 
 
   useEffect(() => {

@@ -1,7 +1,5 @@
 "use client";
-import Img from "next/image";
 import { useState, useEffect } from "react";
-import { post } from "../dashboardData/post";
 import ListComponent from "../components/listComponent.jsx";
 import FilterModal from "../components/filterModal";
 import useFetch from "../../Hooks/useFetch";

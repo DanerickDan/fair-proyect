@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import {
   FaRegStar,
   FaRegBell,
@@ -17,14 +16,14 @@ function ListComponent({ data, loading, error }) {
     <div>
       {data.map((item, index) => (
         <div key={index}>
-          <div className="flex" key={post.id}>
+          <div className="flex" key={item.id}>
             <div
               style={{ background: "black" }}
               className="w-[100%]  mb-[5%] mr-[5%] pt-[10px] pl-[3%] bg-black  text-white grow items-center rounded-[15px] bg-gray-50 text-md font-medium"
             >
               <div className="flex justify-between">
                 <Img
-                  src={item.perfil}
+                  src={item.username}
                   alt="foto"
                   width={50}
                   height={50}
@@ -32,16 +31,16 @@ function ListComponent({ data, loading, error }) {
                 />
                 <div className="mr-[20px]">
                   <span className="text-[12px] text-gray-400">
-                    {item.fecha}
+                    {item.mail}
                   </span>
                 </div>
               </div>
               <div>
-                <p className="pt-[10px]">{item.title}</p>
+                <p className="pt-[10px]">{item.password}</p>
               </div>
               <div>
                 <p className="pt-[10px] pb-[10px] text-[15px] text-gray-400">
-                  {item.description}
+                  {item.createdAt}
                 </p>
               </div>
               <div className="flex justify-between mr-[20px] h-[40px]">

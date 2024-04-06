@@ -10,37 +10,40 @@ export default function useFetch(url, filters, searchTerm) {
       setLoading(true);
       try {
         let fetchUrl = url;
-
+  
         // Agregar parámetros de filtro a la URL
         if (filters && filters.length > 0) {
           const filterParams = filters.join(",");
           fetchUrl += `?filters=${filterParams}`;
         }
-
+  
         // Agregar término de búsqueda a la URL
         if (searchTerm) {
           fetchUrl += `&search=${searchTerm}`;
         }
-
+  
         const response = await fetch(fetchUrl);
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
         const responseData = await response.json();
-        setData(responseData);
+  
+        // Si la respuesta es un objeto, conviértelo en un arreglo
+        const dataArray = Array.isArray(responseData) ? responseData : [responseData];
+        setData(dataArray);
       } catch (error) {
         setError(error);
       } finally {
         setLoading(false);
       }
     };
-
+  
     fetchData();
-
+  
     // Cleanup function
-    return () => {
-    };
+    return () => {};
   }, [url, filters, searchTerm]);
+  
 
   return { data, loading, error };
 }

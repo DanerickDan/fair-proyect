@@ -13,8 +13,10 @@ export default function View1Page() {
   const {
     loading,
     error,
-    fetchData,
-  } = useFetch("http://localhost:3000/api/User", selectedFilters, searchTerm);
+    data,
+  } = useFetch("http://localhost:3000/api/user", selectedFilters, searchTerm);
+
+  console.log(data + "fe")
 
   const handleFilterChange = (filters) => {
     setSelectedFilters(filters);
@@ -32,9 +34,9 @@ export default function View1Page() {
     setIsModalOpen(false);
   };
 
-  useEffect(() => {
-    fetchData();
-  }, [selectedFilters, searchTerm]);
+  // useEffect(() => {
+  //   fetchData();
+  // }, [selectedFilters, searchTerm, data]);
 
   // const MyComponent = ({ stream }) => {
   //     const isStreamValid = stream !== '';
@@ -86,7 +88,7 @@ export default function View1Page() {
       ) : error ? (
         <div>Error: {error.message}</div>
       ) : (
-        <ListComponent data={fetchData} loading={loading} error={error} />
+        <ListComponent data={data} loading={loading} error={error} />
       )}
     </div>
   );

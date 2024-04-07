@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useFormik } from 'formik';
 import { useRouter } from "next/navigation";
+import Pop from "./dashboard/components/newPost";
 
 export default function login() {
   
@@ -17,7 +18,7 @@ export default function login() {
     initialValues: {
       username:'',
       password:'',
-      correo:''
+      email:''
     },onSubmit: value => {
    
       const Ruta = (value.correo.length != 0) 
@@ -52,8 +53,15 @@ export default function login() {
         });
     } })
 
+
+
   return (
+
     <div className="flex items-center ">
+
+    
+
+    
 
       <div className="basis-2/3 p-16  ">
         <div className=" mx-auto mb-4">
@@ -89,7 +97,7 @@ export default function login() {
               name="correo" 
               id="correo"
               onChange={formik.handleChange}
-              value={formik.values.correo} />
+              value={formik.values.email} />
             <input className="cursor-pointer w-2/3 border-2 px-3 py-4 my-2 rounded-xl hover:bg-transparent hover:text-black bg-black text-white font-semibold" type="submit" value="Continuar" />
           </form>
           <div className="flex items-center justify-center gap-3 ">
@@ -105,5 +113,7 @@ export default function login() {
       </div>
 
     </div>
+
+     
   )
 }

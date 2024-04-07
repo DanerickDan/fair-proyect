@@ -21,7 +21,7 @@ export default function login() {
       email:''
     },onSubmit: value => {
    
-      const Ruta = (value.correo.length != 0) 
+      const Ruta = (value.email.length != 0) 
       ? "./api/user" 
       : ".a/api/login"
 
@@ -95,7 +95,7 @@ export default function login() {
               type="email" 
               placeholder="Correo" 
               name="correo" 
-              id="correo"
+              id="email"
               onChange={formik.handleChange}
               value={formik.values.email} />
             <input className="cursor-pointer w-2/3 border-2 px-3 py-4 my-2 rounded-xl hover:bg-transparent hover:text-black bg-black text-white font-semibold" type="submit" value="Continuar" />

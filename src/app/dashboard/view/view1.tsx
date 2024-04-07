@@ -16,7 +16,6 @@ export default function View1Page() {
     data,
   } = useFetch("http://localhost:3000/api/user", selectedFilters, searchTerm);
 
-  console.log(data + "fe")
 
   const handleFilterChange = (filters) => {
     setSelectedFilters(filters);
@@ -29,6 +28,8 @@ export default function View1Page() {
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
+
+  console.log("Hola")
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
